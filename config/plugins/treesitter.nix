@@ -8,7 +8,7 @@
     treesitter-context = {
       enable = true;
       settings = {
-        max_lines = 2;
+        max_lines = 4;
       };
     };
     rainbow-delimiters.enable = true;

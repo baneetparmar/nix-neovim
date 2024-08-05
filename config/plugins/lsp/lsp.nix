@@ -17,7 +17,8 @@
         yamlls.enable = true;
         lua-ls.enable = true;
         svelte.enable = true;
-        ruff-lsp.enable = true;
+        ruff.enable = true;
+        pylsp.enable = true;
         tsserver.enable = true;
         dockerls.enable = true;
         tailwindcss.enable = true;
