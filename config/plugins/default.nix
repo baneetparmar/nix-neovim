@@ -2,10 +2,7 @@
   imports = [
     ./lsp
     ./utils
-    ./btw.nix
-    ./cmp.nix
-    ./git.nix
-    ./lightline.nix
+    ./mini.nix
     ./treesitter.nix
   ];
 }
