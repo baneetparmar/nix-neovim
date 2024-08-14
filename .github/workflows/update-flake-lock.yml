@@ -1,0 +1,44 @@
+name: update-flake-lock
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 0' # runs at midnight every Sunday
+
+jobs:
+  update-lock:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install nix
+      uses: cachix/install-nix-action@v27
+      with:
+        nix_path: nixpkgs=channel:nixos-unstable
+        extra_nix_config: |
+          trusted-public-keys = wires.cachix.org-1:7XQoG91Bh+Aj01mAJi77Ui5AYyM1uEyV0h1wOomqjpk= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
+          substituters = https://wires.cachix.org https://cache.nixos.org/
+          
+    - name: Configure git
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      
+    - name: Update flake.lock
+      uses: DeterminateSystems/update-flake-lock@main
+      with:
+        pr-title: "Update flake.lock" 
+        pr-labels: |
+          chore 
+          update
+      
+    - name: Test builds against new lock
+      run: nix build
+
+    - name: Push changes
+      run: |
+        git add .
+        git commit -m "Update flake.lock"
+        git push
