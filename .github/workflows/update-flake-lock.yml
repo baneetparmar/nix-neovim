@@ -33,11 +33,13 @@ jobs:
       run: nix build
 
     - name: Commit changes
+      if: ${{ success() }} 
       run: |
         git add .
         git commit -m "📦️ Update flake.lock"
 
     - name: Create Pull Request
+      if: ${{ success() }} 
       uses: peter-evans/create-pull-request@v5
       with:
         title: "Update flake.lock"
