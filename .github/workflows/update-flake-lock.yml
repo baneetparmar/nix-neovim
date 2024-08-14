@@ -27,18 +27,21 @@ jobs:
         git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
       
     - name: Update flake.lock
-      uses: DeterminateSystems/update-flake-lock@main
-      with:
-        pr-title: "Update flake.lock" 
-        pr-labels: |
-          chore 
-          update
-      
-    - name: Test builds against new lock
+      run: nix flake update
+
+    - name: Test build against new lock
       run: nix build
 
-    - name: Push changes
+    - name: Commit changes
       run: |
         git add .
-        git commit -m "Update flake.lock"
-        git push
+        git commit -m "📦️ Update flake.lock"
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v5
+      with:
+        title: "Update flake.lock"
+        body: "Automated update of flake.lock file"
+        labels: |
+          dependencies
+          automated
