@@ -1,31 +1,28 @@
 local config = {
-	g = {
-		mapleader = " ",
-	},
 	opt = {
 		clipboard = "unnamedplus",
 
-		autochdir = true,
-
-		number = true,
-
-		expandtab = true,
-		shiftwidth = 2,
-		tabstop = 2,
-		smarttab = true,
-
-		undofile = true,
-		swapfile = false,
-
 		ignorecase = true,
-		smartcase = true,
-		incsearch = true,
-		fillchars = { eob = " " },
+		ttimeoutlen = 5,
+		wrap = false,
+		shortmess = "atI",
+		hidden = true,
+		swapfile = false,
+		errorbells = false,
+		showmode = false,
+		pumheight = 8,
+		completeopt = "menuone,noselect",
 
-		wrap = true,
-		linebreak = true,
-		showbreak = "↪ ",
-		breakindent = true,
+		cursorline = true,
+		number = true,
+		mouse = "a",
+		smartindent = true,
+		tabstop = 2,
+		shiftwidth = 2,
+		shiftround = true,
+		expandtab = true,
+		scrolloff = 10,
+		undofile = true,
 	},
 }
 

@@ -37,8 +37,10 @@
               cmp-buffer
               cmp_luasnip
               fidget-nvim
+              wilder-nvim
               cmp-nvim-lsp
               lspkind-nvim
+              auto-save-nvim
               lsp-zero-nvim
               cmp-async-path
               nvim-lspconfig
