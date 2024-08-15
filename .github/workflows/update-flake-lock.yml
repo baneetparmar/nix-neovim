@@ -16,7 +16,7 @@ jobs:
     - name: Install nix
       uses: cachix/install-nix-action@v27
       with:
-        nix_path: nixpkgs=channel:nixos-unstable
+        nix_path: nixpkgs=channel:nixpkgs-unstable
         extra_nix_config: |
           trusted-public-keys = wires.cachix.org-1:7XQoG91Bh+Aj01mAJi77Ui5AYyM1uEyV0h1wOomqjpk= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
           substituters = https://wires.cachix.org https://cache.nixos.org/
@@ -33,7 +33,7 @@ jobs:
       if: ${{ success() }}
       run: |
         git add flake.lock
-        git commit -m "📦️ Update flake.lock"
+        git commit -m "🔧 Update flake.lock"
 
     - name: Test build against new lock
       if: ${{ success() }}
@@ -48,3 +48,10 @@ jobs:
         labels: |
           dependencies
           automated
+
+    - name: Auto-merge Pull Request
+      if: ${{ success() }}
+      uses: ahmadnassri/action-auto-merge-dependency-updates@v2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        merge-method: merge 

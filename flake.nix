@@ -1,7 +1,7 @@
 {
   inputs = {
 
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixpkgs-unstable";
     tolerable = {
       url = "github:wires-org/tolerable-nvim-nix";
       inputs.nixpkgs.follows = "nixpkgs";
