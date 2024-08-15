@@ -51,7 +51,7 @@ jobs:
 
     - name: Auto-merge Pull Request
       if: ${{ success() }}
-      uses: ahmadnassri/action-auto-merge-dependency-updates@v2
+      uses: ahmadnassri/action-dependabot-auto-merge@v2
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         merge-method: merge 
