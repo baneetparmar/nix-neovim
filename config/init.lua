@@ -1,0 +1,15 @@
+require("colors")
+require("keymaps")
+require("options")
+
+-- Plugins
+require("plugins.mini")
+require("plugins.treesitter")
+require("plugins.fidget")
+require("plugins.cmp")
+require("plugins.lspconfig")
+require("plugins.lspzero")
+require("plugins.toggleterm")
+require("plugins.ts-autotag")
+require("plugins.autosave")
+require("plugins.wilder")
