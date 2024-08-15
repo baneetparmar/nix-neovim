@@ -1,57 +1,47 @@
 name: update-flake-lock
 on:
-  pull_request:
-  push:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * 0' # runs at midnight every Sunday
-
+    - cron: '0 0 * * 3' # runs at midnight every Sunday
 jobs:
   update-lock:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-
-    - name: Install nix
-      uses: cachix/install-nix-action@v27
-      with:
-        nix_path: nixpkgs=channel:nixpkgs-unstable
-        extra_nix_config: |
-          trusted-public-keys = wires.cachix.org-1:7XQoG91Bh+Aj01mAJi77Ui5AYyM1uEyV0h1wOomqjpk= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
-          substituters = https://wires.cachix.org https://cache.nixos.org/
-          
-    - name: Configure git
-      run: |
-        git config user.name "github-actions[bot]"
-        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-      
-    - name: Update flake.lock
-      run: nix flake update
-
-    - name: Commit changes
-      if: ${{ success() }}
-      run: |
-        git add flake.lock
-        git commit -m "🔧 Update flake.lock"
-
-    - name: Test build against new lock
-      if: ${{ success() }}
-      run: nix build
-
-    - name: Create Pull Request
-      if: ${{ success() }}
-      uses: peter-evans/create-pull-request@v5
-      with:
-        title: "Update flake.lock"
-        body: "Automated update of flake.lock file"
-        labels: |
-          dependencies
-          automated
-
-    - name: Auto-merge Pull Request
-      if: ${{ success() }}
-      uses: ahmadnassri/action-dependabot-auto-merge@v2
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        merge-method: merge 
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install nix
+        uses: cachix/install-nix-action@v27
+        with:
+          nix_path: nixpkgs=channel:nixpkgs-unstable
+          extra_nix_config: |
+            trusted-public-keys = wires.cachix.org-1:7XQoG91Bh+Aj01mAJi77Ui5AYyM1uEyV0h1wOomqjpk= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
+            substituters = https://wires.cachix.org https://cache.nixos.org/
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Update flake.lock
+        run: nix flake update
+      - name: Commit changes
+        if: ${{ success() }}
+        run: |
+          git add flake.lock
+          git commit -m "🔧 Update flake.lock"
+      - name: Test build against new lock
+        if: ${{ success() }}
+        run: nix build
+      - name: Create Pull Request
+        if: ${{ success() }}
+        uses: peter-evans/create-pull-request@v5
+        with:
+          title: "Update flake.lock"
+          body: "Automated update of flake.lock file"
+          labels: |
+            dependencies
+            automated
+      - name: Auto-merge Pull Request
+        if: ${{ success() }}
+        uses: ahmadnassri/action-dependabot-auto-merge@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          merge-method: merge
