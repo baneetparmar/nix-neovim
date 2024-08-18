@@ -1,6 +1,7 @@
 require("colors")
 require("keymaps")
 require("options")
+require("autocommands")
 
 -- Plugins
 require("plugins.mini")

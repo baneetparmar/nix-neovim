@@ -1,6 +1,5 @@
 {
   inputs = {
-
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixpkgs-unstable";
     tolerable = {
       url = "github:wires-org/tolerable-nvim-nix";
@@ -31,23 +30,27 @@
           config = {
             plugins = with pkgs.vimPlugins; [
               lz-n
-              luasnip
-              nvim-cmp
               mini-nvim
-              cmp-buffer
-              cmp_luasnip
+
+              # Utils
               fidget-nvim
               wilder-nvim
-              cmp-nvim-lsp
-              lspkind-nvim
-              auto-save-nvim
-              lsp-zero-nvim
-              cmp-async-path
-              nvim-lspconfig
               nvim-ts-autotag
+              auto-save-nvim
               toggleterm-nvim
               tokyonight-nvim
               nvim-treesitter.withAllGrammars
+
+              # LSP
+              luasnip
+              nvim-cmp
+              cmp-buffer
+              cmp_luasnip
+              cmp-nvim-lsp
+              lspkind-nvim
+              lsp-zero-nvim
+              cmp-async-path
+              nvim-lspconfig
             ];
           };
         };
