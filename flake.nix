@@ -32,6 +32,8 @@
               lz-n
               mini-nvim
 
+              oil-nvim
+
               # Utils
               fidget-nvim
               wilder-nvim
