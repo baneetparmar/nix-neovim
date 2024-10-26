@@ -192,11 +192,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1729755165,
-        "narHash": "sha256-6IpnOHWsaSSjT3yvqlrWfHW6HVCT+wOAlUpcooGJ+FQ=",
+        "lastModified": 1729850857,
+        "narHash": "sha256-WvLXzNNnnw+qpFOmgaM3JUlNEH+T4s22b5i2oyyCpXE=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "cabaf14d3e69c9921d7acedf5d7d60bb2b90be02",
+        "rev": "41dea55321e5a999b17033296ac05fe8a8b5a257",
         "type": "github"
       },
       "original": {
@@ -236,11 +236,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1729735994,
-        "narHash": "sha256-Gcz7BrXo/OuUB/nzZXIamk+J6RvxZM9ZdU3d9eW2O7E=",
+        "lastModified": 1729822484,
+        "narHash": "sha256-M0i83KwA5w1To1Cx+SJso2t/GN9jVYnnMacdbBdJpIc=",
         "owner": "wires-org",
         "repo": "tolerable-nvim-nix",
-        "rev": "e99be34ef4c6284b2dcd1a20ee02912108f2be02",
+        "rev": "cc0cab1cf962760ab5cf8107542501d5784d4006",
         "type": "github"
       },
       "original": {
