@@ -237,11 +237,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1735006360,
-        "narHash": "sha256-Nsip3NjLcGsDeTb0eWYNKfHHzE5R2pDRH58I348Z4Z8=",
+        "lastModified": 1735092655,
+        "narHash": "sha256-PmXmNk6N6vHSRmDzh2Ck+tpG0qxxKeGpzSJ2DLvnBLg=",
         "owner": "wires-org",
         "repo": "tolerable-nvim-nix",
-        "rev": "ffdc8eb5e0d45848430567a35105234414239af1",
+        "rev": "970cde67706f8024b660e12b1bf2e2ec6b083030",
         "type": "github"
       },
       "original": {
