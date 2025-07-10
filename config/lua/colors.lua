@@ -10,4 +10,7 @@ require("tokyonight").setup({
 		variables = { italic = true },
 	},
 })
-vim.cmd.colorscheme("tokyonight")
+
+require("aura-theme")
+
+vim.cmd.colorscheme("aura-dark")

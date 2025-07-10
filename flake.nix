@@ -12,12 +12,10 @@
     let
       forAllSystems =
         function:
-        nixpkgs.lib.genAttrs [
-          "x86_64-linux"
-          "x86_64-darwin"
-          "aarch64-linux"
-          "aarch64-darwin"
-        ] (system: function nixpkgs.legacyPackages.${system});
+        nixpkgs.lib.genAttrs [ "x86_64-linux" "x86_64-darwin" "aarch64-linux" "aarch64-darwin" ] (
+          system: function nixpkgs.legacyPackages.${system}
+        );
+
     in
     {
       packages = forAllSystems (pkgs: {
@@ -53,6 +51,20 @@
               lsp-zero-nvim
               cmp-async-path
               nvim-lspconfig
+
+              (pkgs.vimUtils.buildVimPlugin {
+                name = "aura-theme";
+                src = pkgs.fetchFromGitHub {
+                  owner = "daltonmenezes";
+                  repo = "aura-theme";
+                  rev = "6e4f659e74577cae7cb152a96f84c23bc9213f1b";
+                  hash = "sha256-e5CgxDfxW/smWksoVv7WAonOMykpHJUfeK6twLW20lI=";
+                };
+                postUnpack = ''
+                  mkdir -p $out
+                  mv $sourceRoot/packages/neovim/* $out/
+                '';
+              })
             ];
           };
         };
