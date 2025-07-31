@@ -27,6 +27,7 @@
       "original": {
         "owner": "nixos",
         "ref": "nixos-25.05",
+
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -35,6 +36,7 @@
       "inputs": {
         "mnw": "mnw",
         "nixpkgs": "nixpkgs"
+
       }
     }
   },
