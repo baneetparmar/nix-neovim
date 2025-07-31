@@ -1,9 +1,10 @@
-require("colors")
-require("keymaps")
-require("options")
-require("autocommands")
+require("config.autocommands")
+require("config.colors")
+require("config.keymaps")
+require("config.options")
+require("config.plugins")
 
--- Plugins
+-- plugins
 require("plugins.oil")
 require("plugins.cmp")
 require("plugins.mini")
