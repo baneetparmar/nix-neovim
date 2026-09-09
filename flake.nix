@@ -94,7 +94,6 @@
 
           ccls
           sqls
-          next-ls
           htmx-lsp
           tailwindcss-language-server
           vscode-langservers-extracted
